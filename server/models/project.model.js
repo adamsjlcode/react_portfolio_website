@@ -1,12 +1,15 @@
 const mongoose = require('mongoose');
+require('mongoose-type-url');
+
 
 const Schema = mongoose.Schema;
 
 const projectSchema = new Schema({
     username: { type: String, required: true, },
-    description: { type: String, required: true, },
-    duration: { type: Number, required: true, },
+    languages: [String],
     date: { type: Date, required: true, },
+    description: { type: String, required: true, },
+    github: mongoose.SchemaType.Url,
 }, {
     timestamps: true,
 });

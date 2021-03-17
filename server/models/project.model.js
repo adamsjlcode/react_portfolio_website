@@ -9,7 +9,7 @@ const projectSchema = new Schema({
     languages: [String],
     date: { type: Date, required: true, },
     description: { type: String, required: true, },
-    github: mongoose.SchemaType.Url,
+    url: { github: mongoose.SchemaTypes.Url },
 }, {
     timestamps: true,
 });

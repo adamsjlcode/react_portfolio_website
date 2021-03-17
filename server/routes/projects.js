@@ -9,10 +9,12 @@ router.route('/').get((req, res) => {
 
 router.route('/add').post((req, res) => {
     const username = req.body.username;
-    const description = req.body.description;
-    const duration = req.body.duration;
+    const title = req.body.title;
+    const languages = req.body.languages;
     const date = req.body.date;
-    const newProject = new Project({username, description, duration, date});
+    const description = req.body.description;
+    const url = req.body.url;
+    const newProject = new Project({username, title, languages, date, description, url});
 
     newProject.save()
     .then(users => res.json('New Project Added'))

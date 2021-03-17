@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
-const validator = require('validator')
+require('mongoose-type-url');
+const validator = require('validator');
 const Schema = mongoose.Schema;
 
-const statesArray = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"];
+// const statesArray = ["AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA", "MI", "MN", "MS", "MO", "MT", "NE", "NV", "NH", "NJ", "NM", "NY", "NC", "ND", "OH", "OK", "OR", "PA", "RI", "SC", "SD", "TN", "TX", "UT", "VT", "VA", "WA", "WV", "WI", "WY"];
 
 
 const userSchema = new Schema({
@@ -47,35 +48,8 @@ const userSchema = new Schema({
         },
         required: [true, 'User phone number required']
     },
-    address: {
-        address_line_1: {
-            type: String,
-            required: true,
-        },
-        address_line_2: {
-            type: String,
-            required: true,
-        },
-        city: {
-            type: String,
-            required: true,
-        },
-        state: {
-            type: String,
-            uppercase: true,
-            required: true,
-            enum: statesArray
-        },
-        zipcode: {
-            type: Number,
-            min: [10000, "Zip code too short"],
-            max: 99999
-        },
-    },
-    urls: {
-        github: mongoose.SchemaTypes.Url,
-        linkin: mongoose.SchemaTypes.Url,
-    }
+    address: { type: String, required: true},
+    url: { type: mongoose.SchemaTypes.Url }
 }, {
     timestamps: true,
 });

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
-const imageSchema = require("./image.model").schema;
-const { Schema, validator } = mongoose;
+// const imageSchema = require("./image.model").schema;
+const { Schema } = mongoose;
 
 const urlSchema = new Schema(
   {
